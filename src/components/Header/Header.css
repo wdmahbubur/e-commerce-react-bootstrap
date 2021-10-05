@@ -1,0 +1,36 @@
+.navbar {
+    background-color: #f5f4fe;
+    padding: 16px 0;
+}
+.navbar-collapse {
+    flex-grow: unset;
+}
+.navbar-brand {
+    width: 350px;
+}
+.page-name {
+    font-size: 25px;
+    margin-right: 70px;
+}
+.navbar-search-box {
+    background-color: #fff;
+    padding-left: 8px;
+    border-radius: 5px;
+}
+.navbar-search-box input,
+.navbar-search-box input:focus {
+    box-shadow: none;
+    border: none;
+    border-radius: 0 5px 5px 0;
+}
+.add-product-btn {
+    background-color: var(--primary-color);
+    border: 0;
+}
+.add-product-btn:hover {
+    background-color: var(--hover-color);
+}
+.sidebar-toggle {
+    font-size: 25px;
+    margin-right: 20px;
+}

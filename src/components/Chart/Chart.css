@@ -1,0 +1,29 @@
+.chart-card {
+    border: 0;
+    border-radius: 1rem;
+}
+.card {
+    height: 100%;
+}
+
+@media screen and (max-width: 576px) {
+    .card {
+        height: auto;
+    }
+    .recharts-wrapper {
+        width: 100% !important;
+        height: auto !important;
+    }
+    .recharts-surface {
+        width: 300px;
+        height: 200px;
+    }
+    .recharts-legend-wrapper {
+        position: relative !important;
+        width: 300px !important;
+    }
+    .recharts-legend-item .recharts-surface {
+        width: 100% !important;
+        height: 20px;
+    }
+}

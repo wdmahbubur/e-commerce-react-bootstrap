@@ -1,0 +1,107 @@
+aside {
+    width: 320px;
+    padding-top: 20px;
+    padding-right: 10px;
+    position: fixed;
+    z-index: 202560000;
+}
+.sidebar-scroll {
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+}
+.sidebar-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: #f7cbbd67;
+    border-radius: 5rem;
+    height: 5px;
+}
+.user-info {
+    display: flex;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+.user-avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.user-details {
+    margin-left: 12px;
+}
+.user-details h6 {
+    margin-bottom: 0;
+    color: var(--primary-color);
+}
+.user-details small {
+    color: #999999;
+}
+.side-navbar {
+}
+.side-nav {
+}
+.side-nav-item {
+    margin: 8px 0;
+}
+.side-nav-item .accordion-item {
+    background-color: #f5f4fe;
+    border: none;
+}
+.side-nav-item .accordion-button {
+    background-color: #f5f4fe;
+    padding: 0;
+}
+.side-nav-item .accordion-button:focus {
+    border: none;
+    box-shadow: none;
+}
+.side-nav-item .accordion-button:not(.collapsed) {
+    box-shadow: none;
+}
+.side-nav-item .accordion-body {
+    padding: 0px 2.5rem;
+    position: relative;
+}
+
+.side-nav-item-link {
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    padding: 8px 16px;
+    color: black;
+}
+.side-nav-item-link span {
+    font-size: 15px;
+}
+.side-nav-item-link:hover {
+    color: var(--primary-color);
+}
+.side-nav-item-active {
+    background-color: rgba(255, 110, 64, 0.15);
+    border-left: 5px solid;
+    border-right: 5px solid;
+    border-color: var(--primary-color);
+    border-radius: 5rem;
+    color: var(--primary-color);
+    font-weight: 400;
+}
+.side-nav-item-icon {
+    margin-right: 10px;
+    background-color: #fff;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.svg-inline--fa {
+    transition: all 0.2s linear;
+}
+.side-nav-item-link:hover .svg-inline--fa {
+    font-size: 20px;
+}
