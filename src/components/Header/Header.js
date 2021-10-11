@@ -1,17 +1,22 @@
 import React from 'react';
 import './Header.css';
+import logo from '../../logo.png';
 import { Form, FormControl, Nav, Navbar, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faBell, faPlusCircle, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBell, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import useAuth from '../hooks/useAuth';
+import { Link } from 'react-router-dom';
+
 
 const Header = (props) => {
+    const { user, signOutCurrentUser } = useAuth();
+
     return (
         <Navbar expand="lg">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 <img
                     alt=""
-                    src="https://vetra.laborasyon.com/assets/images/logo.svg"
-                    width="100"
+                    src={logo}
                     className="d-inline-block align-top"
                 />
             </Navbar.Brand>
@@ -20,7 +25,7 @@ const Header = (props) => {
                     <label htmlFor="toggle"><FontAwesomeIcon icon={faBars} onClick={props.handleSidebar}></FontAwesomeIcon></label>
                     <input type="checkbox" id="toggle" />
                 </div>
-                <h1 className="page-name">Overview</h1>
+
                 <Form className="d-flex w-75 navbar-search-box">
 
                     <label htmlFor="Search" className="p-2"><FontAwesomeIcon icon={faSearch} ></FontAwesomeIcon></label>
@@ -44,7 +49,23 @@ const Header = (props) => {
                         <Nav.Link href="#action2" className="mx-2">
                             <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
                         </Nav.Link>
-                        <Button className="add-product-btn mx-2"><FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon> Add Product</Button>
+                        {user.email ? <>
+                            <Link to="/dashboard" className="mx-2 nav-link">
+                                Dashboard
+                            </Link>
+                            <Button className="mx-2" onClick={signOutCurrentUser}>
+                                Logout
+                            </Button>
+                        </>
+                            : <>
+                                <Nav.Link href="/login" className="mx-2">
+                                    Login
+                                </Nav.Link>
+                                <Nav.Link href="/register" className="mx-2">
+                                    Register
+                                </Nav.Link>
+                            </>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </div>

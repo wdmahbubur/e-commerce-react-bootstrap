@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import LineChartCom from '../Chart/LineChartCom';
 import PieChartCom from '../Chart/PieChartCom';
 
-const Overview = () => {
+const Dashboard = () => {
     return (
         <div className="mt-3 w-100">
             <Row className="gy-3">
@@ -20,4 +20,4 @@ const Overview = () => {
     );
 };
 
-export default Overview;
+export default Dashboard;

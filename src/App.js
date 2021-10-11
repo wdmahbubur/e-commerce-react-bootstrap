@@ -3,12 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { useState } from 'react';
 import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+import AuthProvider from './Context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Sidebar from './components/Sidebar/Sidebar';
+import Dashboard from './components/Dashboard/Dashboard';
 import OrderList from './components/Order/OrderList';
 import OrderDetails from './components/Order/OrderDetails';
-import Overview from './components/Overview/Overview';
 import GridViewProducts from './components/Products/GridViewProducts';
+import Register from './components/Register/Register';
 
 function App() {
   const [toggle, setToggle] = useState(false);
@@ -17,30 +22,43 @@ function App() {
   }
   return (
     <div>
-      <header className="position-sticky top-0 w-100">
-        <Header handleSidebar={handleSidebar}></Header>
-      </header>
-      <main>
+      <AuthProvider>
         <BrowserRouter>
-          <Sidebar toggle={toggle}></Sidebar>
-          <div className="component-container">
-            <Switch>
-              <Route exact path="/">
-                <Overview></Overview>
-              </Route>
-              <Route path="/order-list">
-                <OrderList></OrderList>
-              </Route>
-              <Route path="/order-details">
-                <OrderDetails></OrderDetails>
-              </Route>
-              <Route path="/products/grid-view">
-                <GridViewProducts></GridViewProducts>
-              </Route>
-            </Switch>
-          </div>
+          <header className="position-sticky top-0 w-100">
+            <Header handleSidebar={handleSidebar}></Header>
+          </header>
+
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
+            </Route>
+            <>
+              <Sidebar toggle={toggle}></Sidebar>
+              <div className="component-container">
+                <PrivateRoute path="/dashboard">
+                  <Dashboard></Dashboard>
+                </PrivateRoute>
+                <PrivateRoute path="/order-list">
+                  <OrderList></OrderList>
+                </PrivateRoute>
+                <PrivateRoute path="/order-details">
+                  <OrderDetails></OrderDetails>
+                </PrivateRoute>
+                <PrivateRoute path="/products/grid-view">
+                  <GridViewProducts></GridViewProducts>
+                </PrivateRoute>
+              </div>
+            </>
+          </Switch>
+
         </BrowserRouter>
-      </main>
+      </AuthProvider>
     </div>
   );
 }

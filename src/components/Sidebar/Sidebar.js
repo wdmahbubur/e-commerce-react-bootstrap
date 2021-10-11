@@ -1,18 +1,30 @@
 import { faReceipt, faShoppingBag, faSignal } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Accordion } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 import './Sidebar.css'
-const Sidebar = (props) => {
+const Sidebar = () => {
+    const { user } = useAuth();
+    const [userDetails, setUserDetails] = useState([]);
 
+    useEffect(() => {
+        setUserDetails(user);
+    }, [user])
+    console.log(userDetails);
     return (
         <aside>
             <div className="sidebar-scroll">
                 <div className="user-info">
-                    <img src="https://vetra.laborasyon.com/assets/images/user/man_avatar3.jpg" alt="" className="user-avatar" />
+                    <img src={
+                        user.photoURL ?
+                            user.photoURL :
+                            "https://randomuser.me/api/portraits/men/20.jpg"
+                    }
+                        alt="" className="user-avatar" />
                     <div className="user-details">
-                        <h6>Timotheus Bendan</h6>
+                        <h6>{userDetails.displayName}</h6>
                         <small>Sales Manager</small>
                     </div>
                 </div>
@@ -20,7 +32,7 @@ const Sidebar = (props) => {
                     <small>E-Commerce</small>
                     <ul className="list-unstyled side-nav">
                         <li className="side-nav-item">
-                            <NavLink to="/#" className="side-nav-item-link" activeClassName="side-nav-item-active">
+                            <NavLink to="/dashboard" className="side-nav-item-link" activeClassName="side-nav-item-active">
                                 <div className="side-nav-item-icon">
                                     <FontAwesomeIcon icon={faSignal}></FontAwesomeIcon>
                                 </div>
